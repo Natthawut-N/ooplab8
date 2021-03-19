@@ -1,3 +1,5 @@
+import jdk.internal.org.objectweb.asm.tree.analysis.Value;
+
 public class NumberNew {
     private int number;
 
@@ -35,5 +37,14 @@ public class NumberNew {
 
     public void divide(int n) {
         setValue(getValue() / n);
+    }
+    public void per(int n) {
+        setValue((getValue() *n)/100);
+    }
+    public void sqrtt(int n) {
+        setValue((int)Math.sqrt(getValue())); 
+    }
+    public void minn(int n) {
+        setValue(getValue() + n);
     }
 }

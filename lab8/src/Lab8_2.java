@@ -10,7 +10,7 @@ public class Lab8_2 extends JFrame implements ActionListener {
     Number obj;
 
     public Lab8_2() {
-        super("Program Save Show Clear Delete Number");
+        super("Program Save Show Clear Delete Number");// ต้องอยู่บันทัดแรกของเมททอด
         container = getContentPane();
         container.setLayout(new FlowLayout());
         textLabel = new JLabel("Enter number :");
@@ -46,9 +46,14 @@ public class Lab8_2 extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == saveBtn) {
-            int value = Integer.parseInt(textField.getText());
-            obj.setValue(value);
-            textField.setText("");
+            if (textField.getText().equals("")) {
+                textField.setText("ERROR");
+            } else {
+                int value = Integer.parseInt(textField.getText());
+                obj.setValue(value);
+                textField.setText("");
+            }
+
         } else if (event.getSource() == clearBtn) {
             obj.setValue(0);
             textField.setText("");

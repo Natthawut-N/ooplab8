@@ -1,12 +1,13 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.lang.Math;
 
 public class Lab8_3 extends JFrame implements ActionListener {
     JLabel textLabel;
     JTextField textField;
     JButton saveBtn, clearBtn, showBtn;
-    JButton addBtn, subBtn, mulBtn, divBtn;
+    JButton addBtn, subBtn, mulBtn, divBtn, forceBtn, perBtn, minBtn, asBtn;
     Container container;
     NumberNew obj;
 
@@ -48,6 +49,26 @@ public class Lab8_3 extends JFrame implements ActionListener {
         divBtn.setFont(new Font("Courier New", Font.BOLD, 20));
         divBtn.addActionListener(this);
         container.add(divBtn);
+
+        forceBtn = new JButton(" sqrt ");
+        forceBtn.setFont(new Font("Courier New", Font.BOLD, 20));
+        forceBtn.addActionListener(this);
+        container.add(forceBtn);
+
+        perBtn = new JButton(" % ");
+        perBtn.setFont(new Font("Courier New", Font.BOLD, 20));
+        perBtn.addActionListener(this);
+        container.add(perBtn);
+
+        minBtn = new JButton(" +/- ");
+        minBtn.setFont(new Font("Courier New", Font.BOLD, 20));
+        minBtn.addActionListener(this);
+        container.add(minBtn);
+
+        asBtn = new JButton(" = ");
+        asBtn.setFont(new Font("Courier New", Font.BOLD, 20));
+        asBtn.addActionListener(this);
+        container.add(asBtn);
         setSize(340, 120);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -86,6 +107,24 @@ public class Lab8_3 extends JFrame implements ActionListener {
             int value = Integer.parseInt(textField.getText());
             obj.divide(value);
             textField.setText(obj.toString());
+        }else if (event.getSource() == perBtn) {
+            int value = Integer.parseInt(textField.getText());
+            obj.per(value);
+            textField.setText(obj.toString());
+        }else if (event.getSource() == forceBtn) {
+            int value = Integer.parseInt(textField.getText());
+            obj.sqrtt(value);
+            textField.setText(obj.toString());
+        }else if (event.getSource() == minBtn) {
+            String str ="";
+            char result= textField.getText().charAt(0);
+            if (result=='-') {
+                str = textField.getText().replace("-","");
+                textField.setText(str);
+            }else{
+                str = "-"+textField.getText();
+                textField.setText(str);
+            }
         }
     }
 }
