@@ -7,7 +7,7 @@ public class Lab8_3 extends JFrame implements ActionListener {
     JLabel textLabel;
     JTextField textField;
     JButton saveBtn, clearBtn, showBtn;
-    JButton addBtn, subBtn, mulBtn, divBtn, forceBtn, perBtn, minBtn, asBtn;
+    JButton addBtn, subBtn, mulBtn, divBtn, forceBtn, perBtn, minBtn, asBtn,sixBtn,tenBtn;
     Container container;
     NumberNew obj;
 
@@ -65,11 +65,17 @@ public class Lab8_3 extends JFrame implements ActionListener {
         minBtn.addActionListener(this);
         container.add(minBtn);
 
-        asBtn = new JButton(" = ");
-        asBtn.setFont(new Font("Courier New", Font.BOLD, 20));
-        asBtn.addActionListener(this);
-        container.add(asBtn);
-        setSize(340, 120);
+        sixBtn = new JButton(" HEX ");
+        sixBtn.setFont(new Font("Courier New", Font.BOLD, 20));
+        sixBtn.addActionListener(this);
+        container.add(sixBtn);
+
+        tenBtn = new JButton(" 10^ ");
+        tenBtn.setFont(new Font("Courier New", Font.BOLD, 20));
+        tenBtn.addActionListener(this);
+        container.add(tenBtn);
+
+        setSize(340, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -83,47 +89,89 @@ public class Lab8_3 extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == saveBtn) {
-            int value = Integer.parseInt(textField.getText());
+            if(textField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please input","input null",0);
+            }else{
+            Double value = Double.parseDouble(textField.getText());
             obj.setValue(value);
             textField.setText("");
+            }
         } else if (event.getSource() == clearBtn) {
             obj.setValue(0);
             textField.setText("");
         } else if (event.getSource() == showBtn) {
             textField.setText(obj.toString());
         } else if (event.getSource() == addBtn) {
-            int value = Integer.parseInt(textField.getText());
-            obj.add(value);
-            textField.setText(obj.toString());
+            if(textField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please input","input null",0);
+            }else{
+                Double value = Double.parseDouble(textField.getText());
+                obj.add(value);
+                textField.setText(obj.toString());
+            }
         } else if (event.getSource() == subBtn) {
-            int value = Integer.parseInt(textField.getText());
+            if(textField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please input","input null",0);
+            }else{
+            Double value = Double.parseDouble(textField.getText());
             obj.subtract(value);
             textField.setText(obj.toString());
+            }
         } else if (event.getSource() == mulBtn) {
-            int value = Integer.parseInt(textField.getText());
+            if(textField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please input","input null",0);
+            }else{
+            Double value = Double.parseDouble(textField.getText());
             obj.multiply(value);
             textField.setText(obj.toString());
+            }
         } else if (event.getSource() == divBtn) {
-            int value = Integer.parseInt(textField.getText());
+            if(textField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please input","input null",0);
+            }else{
+            Double value = Double.parseDouble(textField.getText());
             obj.divide(value);
             textField.setText(obj.toString());
-        }else if (event.getSource() == perBtn) {
-            int value = Integer.parseInt(textField.getText());
+            }
+        } else if (event.getSource() == perBtn) {
+            if(textField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please input","input null",0);
+            }else{
+            Double value = Double.parseDouble(textField.getText());
             obj.per(value);
             textField.setText(obj.toString());
-        }else if (event.getSource() == forceBtn) {
-            int value = Integer.parseInt(textField.getText());
-            obj.sqrtt(value);
-            textField.setText(obj.toString());
-        }else if (event.getSource() == minBtn) {
-            String str ="";
-            char result= textField.getText().charAt(0);
-            if (result=='-') {
-                str = textField.getText().replace("-","");
-                textField.setText(str);
+            }
+         } else if (event.getSource() == forceBtn) {
+            if(textField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please input","input null",0);
             }else{
-                str = "-"+textField.getText();
-                textField.setText(str);
+             Double value = Double.parseDouble(textField.getText());
+             obj.sqrtt(value);
+             textField.setText(obj.toString());
+            }
+        }else if (event.getSource() == sixBtn) {
+            if(textField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please input","input null",0);
+            }else{
+            int value = Integer.parseInt(textField.getText());
+            obj.hex(value);
+            textField.setText(obj.getValue1());
+            }
+        }else if (event.getSource() == tenBtn) {
+            if(textField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please input","input null",0);
+            }else{
+            Double value = Double.parseDouble(textField.getText());
+            obj.ten(value);
+            textField.setText(obj.toString());
+            }
+        }else if (event.getSource() == minBtn) {
+            if(textField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please input","input null",0);
+            }else{
+            Double value = Double.parseDouble(textField.getText());
+            obj.min(value);
+            textField.setText(obj.toString());
             }
         }
     }
